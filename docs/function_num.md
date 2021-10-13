@@ -4,8 +4,8 @@
 
 | 方法    | 说明           | 详情 |
 | :------ | :------------- | :--- |
-| toCnNum | 数字转中文数字 |      |
-| toCnRmb | 数字转金额     |      |
+| toChNum | 数字转中文数字 |      |
+| toChRmb | 数字转金额     |      |
 
 
 
@@ -16,5 +16,9 @@
 use shiyunUtils\helper\HelperNum;
 
 HelperNum::方法();
+
+# 或者
+
+\shiyunUtils\helper\HelperNum::方法();
 
 ```
