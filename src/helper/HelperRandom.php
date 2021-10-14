@@ -45,4 +45,36 @@ class HelperRandom
         $str = self::doLetterBase($length);
         return md5($str);
     }
+
+    /**
+     * 产生随机字符串，不长于32位
+     * @param int $length
+     */
+    public static function doNumLetter($length = 32)
+    {
+        // 密码字符集，可任意添加你需要的字符
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+        $str = "";
+        for ($i = 0; $i < $length; $i++) {
+            // $str .= $chars[mt_rand(0, strlen($chars) - 1)];
+            $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+        }
+        return $str;
+    }
+    /**
+     * 生成随机字符串 - 不长于32位
+     * 生成随机字符串 - 最长为32位字符串
+     * @param number $length 长度，默认为32，最长为32字节
+     * @return string
+     */
+    public static function createNoncestr($length = 32, $type = false)
+    {
+        $str = self::doNumLetter($length);
+        if ($type == true) {
+            return strtoupper(md5(time() . $str));
+        } else {
+            return $str;
+        }
+    }
 }

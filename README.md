@@ -15,6 +15,8 @@ php工具包
 ## 常用的一些类库
 
 - [curl请求](./docs/lib_curl.md)
+- [xml操作](./docs/lib_xml.md) 
+
 - [正则](./docs/lib_regular.md) 
 - [加密-数组](./docs/lib_encrypt_arr.md)
 - [加密-字符串](./docs/lib_encrypt_str.md)
