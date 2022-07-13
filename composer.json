@@ -2,6 +2,7 @@
     "name": "shiyun/php-utils",
     "description": "php utils libs for shiyun",
     "version": "1.0.0",
+    "type": "library",
     "authors": [
         {
             "name": "10yun",

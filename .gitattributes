@@ -8,3 +8,4 @@
 /tests/                export-ignore
 /Makefile              export-ignore
 /.vscode/              export-ignore
+/*.zip                 export-ignore
