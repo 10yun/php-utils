@@ -9,10 +9,6 @@ class LibEncryptNum
      */
     public static function numberEncode($_str = '')
     {
-        function random($min = 0, $max = 1)
-        {
-            return $min + mt_rand() / mt_getrandmax() * ($max - $min);
-        }
         $staticchars = "PXhw7UT1B0a9kQDKZsjIASmOezxYG4CHo5Jyfg2b8FLpEvRr3WtVnlqMidu6cN";
         $encodechars = "";
         for ($i = 0; $i < strlen($_str); $i++) {
@@ -22,11 +18,15 @@ class LibEncryptNum
             } else {
                 $code = $staticchars[($num0 + 3) % 62];
             }
-            $num1 = intval(random() * 62, 10);
-            $num2 = intval(random() * 62, 10);
+            $num1 = intval(self::random() * 62, 10);
+            $num2 = intval(self::random() * 62, 10);
             $encodechars .= $staticchars[$num1] . $code . $staticchars[$num2];
         }
         return $encodechars;
+    }
+    static function random($min = 0, $max = 1)
+    {
+        return $min + mt_rand() / mt_getrandmax() * ($max - $min);
     }
     /**
      * 字符串解密
