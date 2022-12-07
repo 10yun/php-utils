@@ -47,7 +47,7 @@ class HelperTree
     /**
      * 获取数组的所有相关子集
      */
-    public static function peerDoSonIds($data = [], $upID, $upField, $idField)
+    public static function peerDoSonIds($data = [], $upID = 0, $upField = '', $idField = '')
     {
         $ids = array();
         foreach ($data as $key => $val) {
@@ -64,7 +64,7 @@ class HelperTree
      * @param $saveField 存储的key
      * @param $isInSelf 是否包含自身
      */
-    public static function peerDoParentIds($data = [], $upID = 0, $upField, $idField, $saveField = 'parent', $isInSelf = true)
+    public static function peerDoParentIds($data = [], $upID = 0, $upField = '', $idField = '', $saveField = 'parent', $isInSelf = true)
     {
         $parent_arr = [];
         foreach ($data as $key => $val) {

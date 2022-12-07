@@ -176,7 +176,7 @@ class HelperArr
         }
         return $array;
     }
-    public static function addToMerge($oldData = [], $addArr)
+    public static function addToMerge($oldData = [], $addArr = [])
     {
         $newArr = [];
         foreach ($oldData as $val) {
