@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace shiyunUtils\base;
 
-
-
 use ArrayAccess;
 use ArrayIterator;
 use Closure;
