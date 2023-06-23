@@ -22,7 +22,7 @@ class LibFileBase
      */
     public static function moveFile($old_path = '', $new_path = '')
     {
-        ctoFileDirCreate($new_path, 0777, _CTOCODE_FILE_);
+        ctoFileDirCreate($new_path, 0777, _PATH_FILE_);
         $newdir = dirname($new_path);
         if (@rename($old_path, $new_path)) {
             return true;
