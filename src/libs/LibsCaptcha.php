@@ -18,7 +18,7 @@ namespace shiyunUtils\libs;
  */
 /*
  * 实例化验证码类
- * $image = LibsCaptcha::getInstance ();
+ * $image = LibsCaptcha::getInstance()->setXxx()->getImage();
  */
 class LibsCaptcha
 {

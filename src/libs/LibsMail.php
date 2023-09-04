@@ -5,80 +5,66 @@ namespace shiyunUtils\libs;
 class LibsMail
 {
     /**
-     * @var string 邮件传输代理用户名
-     * @access private
+     * 邮件传输代理用户名
      */
-    private $_userName;
+    private string $_userName;
     /**
-     * @var string 邮件传输代理密码
-     * @access private
+     * 邮件传输代理密码
      */
-    private $_password;
+    private string $_password;
     /**
-     * @var string 邮件传输代理服务器地址
-     * @access protected
+     * 邮件传输代理服务器地址
      */
-    protected $_sendServer;
+    protected string $_sendServer;
     /**
-     * @var int 邮件传输代理服务器端口
-     * @access protected
+     * 邮件传输代理服务器端口
      */
-    protected $_port = 25;
+    protected int $_port = 25;
     /**
-     * @var string 发件人
-     * @access protected
+     * 发件人
      */
-    protected $_from;
+    protected string $_from;
     /**
-     * @var string 收件人
-     * @access protected
+     * 收件人
      */
-    protected $_to;
+    protected string $_to;
     /**
-     * @var string 抄送
-     * @access protected
+     * 抄送
      */
-    protected $_cc;
+    protected string $_cc;
     /**
-     * @var string 秘密抄送
-     * @access protected
+     * 秘密抄送
      */
-    protected $_bcc;
+    protected string $_bcc;
     /**
-     * @var string 主题
-     * @access protected
+     * 主题
      */
-    protected $_subject;
+    protected string $_subject;
     /**
-     * @var string 邮件正文
-     * @access protected
+     * 邮件正文
      */
-    protected $_body;
+    protected string $_body;
     /**
-     * @var string 附件
-     * @access protected
+     * 附件
      */
-    protected $_attachment;
+    protected string $_attachment;
     /**
-     * @var object reource socket资源
-     * @access protected
+     * reource socket资源
      */
-    protected $_socket;
+    protected object $_socket;
     /**
-     * @var string 错误信息
-     * @access protected
+     * 错误信息
      */
-    protected $_errorMessage;
+    protected string $_errorMessage;
     /**
      * 设置邮件传输代理，如果是可以匿名发送有邮件的服务器，只需传递代理服务器地址就行
-     * @access public
      * @param string $server 代理服务器的ip或者域名
      * @param string $username 认证账号
      * @param string $password 认证密码
      * @param int $port 代理服务器的端口，smtp默认25号端口
      * @return boolean
      */
-    public function setServer($server, $username = "", $password = "", $port = 25)
+    public function setServer(string $server, string $username = "", string $password = "", int $port = 25): bool
     {
         $this->_sendServer = $server;
         $this->_port = $port;
