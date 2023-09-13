@@ -103,13 +103,9 @@ class LibXml
         $xml .= "</{$root}>";
         return $xml;
     }
-
-
-
     public static function xmlToJson()
     {
     }
-
     public static function jsonToXml()
     {
     }

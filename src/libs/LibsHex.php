@@ -38,11 +38,12 @@ class LibsHex
      * 十六进制转字符串函数
      * @pream string $hex='616263';
      */
-    public function hexToStr($hex)
+    public function hexToStr($hex = '')
     {
         $str = "";
-        for ($i = 0; $i < strlen($hex) - 1; $i += 2)
+        for ($i = 0; $i < strlen($hex) - 1; $i += 2) {
             $str .= chr(hexdec($hex[$i] . $hex[$i + 1]));
+        }
         return $str;
     }
     /**

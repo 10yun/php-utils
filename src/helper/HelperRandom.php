@@ -49,6 +49,7 @@ class HelperRandom
     /**
      * 产生随机字符串，不长于32位
      * @param int $length
+     * @return 产生的随机字符串
      */
     public static function doNumLetter($length = 32)
     {

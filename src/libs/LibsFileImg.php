@@ -5,15 +5,8 @@ namespace shiyunUtils\libs;
 /**
  * 图片操作类
  */
-class LibFileImg
+class LibsFileImg extends LibsFileFactory
 {
-
-    // 设置路径
-    public static function setPath($file_path = '')
-    {
-        return (new self);
-    }
-
     /**
      * 图片 裁剪
      * @author ctocode-zhw
@@ -116,14 +109,8 @@ class LibFileImg
         }
         return false;
     }
-
-
-
     public function doWatermark($groundImage, $waterPos = 0, $waterImage = "", $waterText = "", $textFont = 14, $textColor = "#FF0000")
     {
         // return imagewatermark_func($groundImage, $groundImage, $waterPos, $waterImage, $waterText, 95, $textFont, $textColor);
-
-
-
     }
 }

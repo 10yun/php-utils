@@ -2,7 +2,7 @@
 
 namespace shiyunUtils\libs;
 
-class LibsZipfile
+class LibsFileZip
 {
     protected $datasec = array();
     protected $ctrl_dir = array();
