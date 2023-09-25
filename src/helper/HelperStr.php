@@ -16,7 +16,7 @@ class HelperStr
     /**
      * 检查字符串是否以某些字符串开头
      *
-     * @param  string       $haystack
+     * @param  string       $haystack 
      * @param  string|array $needles
      * @return bool
      */

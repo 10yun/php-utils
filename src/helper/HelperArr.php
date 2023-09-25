@@ -41,21 +41,22 @@ class HelperArr
 
     /**
      * 二维数组删除不要的字段
+     * @param array $originalArray 原有的数组
+     * @param array $delKeyArr 需要删除字段数组
+     * @return array 返回删除不需要Key后的新数组
      * @author ctocode-zhw
      * @version 2019-03-07
-     * @return mixed
      */
-    public static function columnsDel(&$allArr, $delKeyArr = null)
+    public static function columnsDel(array $originalArray = [], array $delKeyArr = []): array
     {
-        if (is_array($allArr)) {
-            foreach ($delKeyArr as $del_field) {
-                foreach ($allArr as $key => $val) {
-                    if (in_array($del_field, array_keys($val))) {
-                        unset($allArr[$key][$del_field]);
-                    }
-                }
+        // 使用array_map()函数处理数组
+        $modifiedArray = array_map(function ($item) use ($delKeyArr) {
+            foreach ($delKeyArr as $field) {
+                unset($item[$field]);
             }
-        }
+            return $item;
+        }, $originalArray);
+        return $modifiedArray;
     }
 
     /**
