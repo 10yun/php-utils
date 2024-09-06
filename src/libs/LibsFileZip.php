@@ -156,10 +156,8 @@ class LibsFileZip
 
         // 下载文件
         ob_clean();
-
-        header('Pragma: public');
         header('Last-Modified:' . gmdate('D, d M Y H:i:s') . 'GMT');
-        header('Cache-Control:no-store, no-cache, must-revalidate');
+        header('Cache-Control:public, no-store, no-cache, must-revalidate');
         header('Cache-Control:pre-check=0, post-check=0, max-age=0');
         header('Content-Transfer-Encoding:binary');
         header('Content-Encoding:none');

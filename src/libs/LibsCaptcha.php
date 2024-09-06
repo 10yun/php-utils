@@ -150,7 +150,7 @@ class LibsCaptcha
     {
         ob_clean();
         header('Content-Type:image/png');
-        header('Pragma: no-cache');
+        header('Cache-Control: no-cache');
         imagepng($im);
     }
     /**

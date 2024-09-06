@@ -32,4 +32,11 @@ trait TraitModeInstance
         // }
         // return static::$instance;
     }
+    /**
+     * 每次都创建新的单例
+     */
+    public static function newInstance(): static
+    {
+        return new static();
+    }
 }

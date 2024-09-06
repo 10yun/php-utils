@@ -1,10 +1,14 @@
 <?php
 
+namespace shiyunUtils\libs;
+
 /**
  * 随机串
  */
 class LibsRandom
 {
+    use \shiyunUtils\base\TraitModeInstance;
+
     // 随机 字符串
     protected $chars = '';
     // 密钥 key
@@ -37,6 +41,58 @@ class LibsRandom
     {
         $this->key = $key;
         return $this;
+    }
+    /**
+     * @param int $length 生成的随机字符串的长度
+     * @param array $exclude 要排除的字符数组
+     * @return string 生成的随机字符串
+     */
+    public function getType4($length = 10, array $exclude = [])
+    {
+        // $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?';
+        $characterGroups = [
+            '0123456789',               // 数字
+            'abcdefghijklmnopqrstuvwxyz', // 小写字母
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZ', // 大写字母
+            '!@#$%^&*',                 // 特殊符号
+        ];
+        /**
+         * 先排除
+         */
+        foreach ($characterGroups as $key => $group) {
+            if (!empty($exclude)) {
+                // 将排除的字符从字符集中移除
+                foreach ($exclude as $item) {
+                    $group = str_replace($item, '', $group);
+                }
+                $characterGroups[$key] = $group;
+            }
+        }
+        /**
+         * 然后合并
+         */
+        $characters = implode("", $characterGroups);
+        /**
+         * 随机选择至少一个字符组的字符
+         * 
+         */
+        // 从$characters字符串中随机选择一个数字字符
+        // 从$characters字符串中随机选择一个小写字母字符
+        // 从$characters字符串中随机选择一个大写字母字符
+        // 从$characters字符串中随机选择一个特殊符号字符
+        $randomString = '';
+        foreach ($characterGroups as $group) {
+            $randomCharacter = $group[rand(0, strlen($group) - 1)];
+            $randomString .= $randomCharacter;
+        }
+        // 随机选择剩下的字符，直到达到指定长度
+        while (strlen($randomString) < $length) {
+            $randomCharacter = $characters[rand(0, strlen($characters) - 1)];
+            $randomString .= $randomCharacter;
+        }
+        // 将字符顺序打乱，以增加随机性
+        $randomString = str_shuffle($randomString);
+        return $randomString;
     }
 
     /**

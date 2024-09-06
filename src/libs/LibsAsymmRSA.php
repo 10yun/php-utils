@@ -59,7 +59,7 @@ class LibsAsymmRSA
      * @desc 设置私钥
      * @param $privateKey
      */
-    protected function setPrivateKey($privateKey)
+    public function setPrivateKey($privateKey)
     {
         $this->privateKey = $privateKey;
         return $this;
@@ -68,7 +68,7 @@ class LibsAsymmRSA
      * @desc 设置私钥
      * @param $publicKey
      */
-    protected function setPublicKey($publicKey)
+    public function setPublicKey($publicKey)
     {
         $this->publicKey = $publicKey;
         return $this;

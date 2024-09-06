@@ -97,7 +97,7 @@ class LibsLogger
 
         $fileDirArr = [];
         $fileDirArr[] = $this->logDir;
-        $fileDirArr[] = "/ctocode_log_{$type}/";
+        $fileDirArr[] = "/log_{$type}/";
         if (!empty($this->logGroup)) {
             $fileDirArr[] = $this->logGroup;
         }

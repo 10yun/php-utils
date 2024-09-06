@@ -15,7 +15,6 @@ class HelperUI
         header('Accept-Ranges: bytes');
         $expire = 604800;
         header('Cache-Control: max-age=' . $expire);
-        header('Pragma: cache');
         // header('Content-Type: application/javascript;charset=UTF-8');
         header('Content-Type: text/javascript;charset=UTF-8');
         header('Content-Length: ' . strlen($uiContent));
@@ -39,7 +38,6 @@ class HelperUI
         header('Accept-Ranges: bytes');
         $expire = 604800;
         header('Cache-Control: max-age=' . $expire);
-        header('Pragma: cache');
         header('Content-Type: text/css;charset=UTF-8');
         header('Content-Length: ' . strlen($uiContent));
         echo $uiContent;
@@ -71,7 +69,6 @@ class HelperUI
         header('Accept-Ranges: bytes');
         $expire = 604800;
         header('Cache-Control: max-age=' . $expire);
-        header('Pragma: cache');
         header('Content-type: image/' . $houzui_arr[strtolower($houzhui)]);
         header('Content-Length: ' . strlen($uiContent));
         // fpassthru ( $fp );

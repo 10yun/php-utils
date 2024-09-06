@@ -4,11 +4,13 @@ namespace shiyunUtils\libs;
 
 class LibEncryptNum
 {
+
     /**
      * 字符串加密
      */
-    public static function numberEncode($_str = '')
+    public static function numberEncode(string|int $_str = '')
     {
+        $_str = strval($_str);
         $staticchars = "PXhw7UT1B0a9kQDKZsjIASmOezxYG4CHo5Jyfg2b8FLpEvRr3WtVnlqMidu6cN";
         $encodechars = "";
         for ($i = 0; $i < strlen($_str); $i++) {
