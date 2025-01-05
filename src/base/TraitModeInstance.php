@@ -39,4 +39,9 @@ trait TraitModeInstance
     {
         return new static();
     }
+    // public static function __callStatic($method, $params)
+    // {
+    //     $query = new self();
+    //     return call_user_func_array([$query, $method], $params);
+    // }
 }

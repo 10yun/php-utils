@@ -308,33 +308,6 @@ class LibHttpCurl
         return true;
     }
 
-    /**
-     * 发送文件到客户端
-     * @param string $file
-     * @param bool   $delaftersend   发送后删除
-     * @param bool   $exitaftersend  发送后退出
-     */
-    public static function sendToBrowser($file, $delaftersend = true, $exitaftersend = true)
-    {
-        if (file_exists($file) && is_readable($file)) {
-            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment;filename = ' . basename($file));
-            header('Content-Transfer-Encoding: binary');
-            header('Expires: 0');
-            header('Cache-Control: public, must-revalidate, post-check = 0, pre-check = 0');
-            header('Content-Length: ' . filesize($file));
-            ob_clean();
-            flush();
-            readfile($file);
-            if ($delaftersend) {
-                unlink($file);
-            }
-            if ($exitaftersend) {
-                exit;
-            }
-        }
-    }
 
     public function httpGet($apiUrl = '', $reqData = [])
     {
@@ -760,36 +733,6 @@ class LibHttpCurl
         } else {
             return false;
         }
-    }
-
-    /*
-	 * 功能： 下载文件
-	 * 参数:$filename 下载文件路径
-	 * $showname 下载显示的文件名
-	 * $expire 下载内容浏览器缓存时间
-	 */
-    public static function download($filename, $showname = '', $expire = 1800)
-    {
-        if (file_exists($filename) && is_file($filename)) {
-            $length = filesize($filename);
-        } else {
-            die('下载文件不存在！');
-        }
-
-        $type = mime_content_type($filename);
-
-        // 发送Http Header信息 开始下载
-        header("Cache-control: public, max-age=" . $expire);
-        // header('Cache-Control: no-store, no-cache, must-revalidate');
-        header("Expires: " . gmdate("D, d M Y H:i:s", time() + $expire) . "GMT");
-        header("Last-Modified: " . gmdate("D, d M Y H:i:s", time()) . "GMT");
-        header("Content-Disposition: attachment; filename=" . $showname);
-        header("Content-Length: " . $length);
-        header("Content-type: " . $type);
-        header('Content-Encoding: none');
-        header("Content-Transfer-Encoding: binary");
-        readfile($filename);
-        return true;
     }
 }
 

@@ -18,9 +18,9 @@ namespace shiyunUtils\libs;
  */
 /*
  * 实例化验证码类
- * $image = LibsCaptcha::getInstance()->setXxx()->getImage();
+ * $image = LibCaptcha::getInstance()->setXxx()->getImage();
  */
-class LibsCaptcha
+class LibCaptcha
 {
     private $randLength = 4;
     private $x_size = 70;
@@ -34,16 +34,12 @@ class LibsCaptcha
     /**
      * 私有化构造方法 , 使该类不能再外部实例化
      */
-    public function __construct($imgspathyzm = null)
-    {
-    }
+    public function __construct($imgspathyzm = null) {}
 
     /**
      * 私有化__clone , 防止类被复制
      */
-    private function __clone()
-    {
-    }
+    private function __clone() {}
 
     /**
      * 用于实例化类 公共的静态 , 使这个方法可以在类不实例化的情况下调用

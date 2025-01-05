@@ -18,11 +18,17 @@ class LibsLogger
     protected $logGroup = '';
     protected $logName = '';
     protected $printType = 'var_export';
-
+    protected $channelType = 'file';
     function __construct()
     {
         // $this->setBaseDir(_PATH_RUNTIME_);
         $this->setDir(_PATH_RUNTIME_);
+    }
+    // 设置存储驱动通道
+    public function setSaveChannel($channel = '')
+    {
+        $this->channelType = $channel;
+        return $this;
     }
     public function setBaseDir($baseDir = '')
     {
@@ -124,10 +130,18 @@ class LibsLogger
         $logContArr[] = (is_array($content) || is_object($content)) ? var_export($content, 1) : $content;
         $logContStr = implode("\n", $logContArr) . "\n";
 
-        @file_put_contents($filePath, $logContStr, FILE_APPEND);
-
-        // $logfile = fopen($filePath, "a+");
-        // fwrite($logfile, $logContStr);
-        // fclose($logfile);
+        switch ($this->channelType) {
+            case 'mongodb':
+                break;
+            case 'redis':
+                break;
+            case 'file':
+            default:
+                // $logfile = fopen($filePath, "a+");
+                // fwrite($logfile, $logContStr);
+                // fclose($logfile);
+                @file_put_contents($filePath, $logContStr, FILE_APPEND);
+                break;
+        }
     }
 }

@@ -6,9 +6,7 @@ namespace shiyunUtils\libs;
  * 文件处理
  * @author ctocode-zhw
  */
-class FileException extends \Exception
-{
-}
+class FileException extends \Exception {}
 class LibsFileFactory
 {
     // 模式 描述
@@ -224,7 +222,7 @@ class LibsFileFactory
         } else if (!$a['is_dir'] && $b['is_dir']) {
             return 1;
         }
-        if ($this->orderby == 'size') {
+        if ($this->orderBy == 'size') {
             if ($a['filesize'] > $b['filesize']) {
                 return 1;
             } else if ($a['filesize'] < $b['filesize']) {
@@ -232,7 +230,7 @@ class LibsFileFactory
             } else {
                 return 0;
             }
-        } else if ($this->orderby == 'time') {
+        } else if ($this->orderBy == 'time') {
             if ($a['datetime'] > $b['datetime']) {
                 return 1;
             } else if ($a['datetime'] < $b['datetime']) {
@@ -240,7 +238,7 @@ class LibsFileFactory
             } else {
                 return 0;
             }
-        } else if ($this->orderby == 'type') {
+        } else if ($this->orderBy == 'type') {
             return strcmp($a['filetype'], $b['filetype']);
         }
         return strcmp($a['filename'], $b['filename']);
@@ -261,21 +259,21 @@ class LibsFileFactory
         }
         return $dir;
     }
-    function getDirList($dir = '', $orderby = false, $orderdesc = 'asc')
+    function getDirList($dir = '', $orderBy = false, $orderdesc = 'asc')
     {
         $dir = $this->extdir($dir);
         if (!is_dir($dir)) {
             return array();
         }
 
-        $orderby = strtolower($orderby);
-        $orderby = in_array($orderby, array(
+        $orderBy = strtolower($orderBy);
+        $orderBy = in_array($orderBy, array(
             'size',
             'name',
             'time',
             'type'
-        )) ? $orderby : false;
-        $this->orderby = $orderby;
+        )) ? $orderBy : false;
+        $this->orderBy = $orderBy;
         $this->orderDesc = strtolower($orderdesc);
 
         $file_list = array();
@@ -322,7 +320,7 @@ class LibsFileFactory
             }
             closedir($handle);
         }
-        if ($this->orderby == false) {
+        if ($this->orderBy == false) {
             return $file_list;
         }
         usort($file_list, array(

@@ -135,9 +135,8 @@ class LibsFileZip
 	 * )
 	 * );
 	 */
-    public function exportZip($image = array(), $filename = null)
+    public function write_image($image = array(), $filename = null)
     {
-        header("Content-type: text/html; charset=utf-8");
         // 下面是实例操作过程：
         // 产生一个临时文件，用于缓存下载文件
         $dfile = tempnam('/tmp', 'tmp');
@@ -153,25 +152,5 @@ class LibsFileZip
         }
         // ----------------------
         $this->output($dfile);
-
-        // 下载文件
-        ob_clean();
-        header('Last-Modified:' . gmdate('D, d M Y H:i:s') . 'GMT');
-        header('Cache-Control:public, no-store, no-cache, must-revalidate');
-        header('Cache-Control:pre-check=0, post-check=0, max-age=0');
-        header('Content-Transfer-Encoding:binary');
-        header('Content-Encoding:none');
-        header('Content-type:multipart/form-data');
-        header('Content-Disposition:attachment; filename="' . $filename . '"'); // 设置下载的默认文件名
-        header('Content-length:' . filesize($dfile));
-        $fp = fopen($dfile, 'r');
-        while (connection_status() == 0 && $buf = @fread($fp, 8192)) {
-            echo $buf;
-        }
-        fclose($fp);
-        @unlink($dfile);
-        @flush();
-        @ob_flush();
-        exit();
     }
 }

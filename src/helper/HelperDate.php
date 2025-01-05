@@ -8,6 +8,72 @@ namespace shiyunUtils\helper;
 class HelperDate
 {
     /**
+     * 获取指定日期段内每一天的日期
+     * @param  String|Date  $startDate 开始日期
+     * @param  String|Date  $endDate   结束日期
+     * @return Array
+     */
+    public static function getDateFromRange($startDate = '', $endDate = '')
+    {
+        $stimestamp = strtotime($startDate);
+        $etimestamp = strtotime($endDate);
+        // 计算日期段内有多少天
+        $days = ($etimestamp - $stimestamp) / 86400 + 1;
+        // 保存每天日期
+        $date = array();
+        for ($i = 0; $i < $days; $i++) {
+            $date[] = date('Y-m-d', $stimestamp + (86400 * $i));
+        }
+        return $date;
+    }
+    /**
+     * 获取日期，获取本月所有天数
+     */
+    public static function getDateArr1($curr_date)
+    {
+        // 日期配置
+        $weekname = array('星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六',);
+        //星期日排到末位
+        if (empty($week)) {
+            $week = 7;
+        }
+        // 总天数
+        $day_num = date("t", strtotime($curr_date));
+        $head_arr = [];
+        for ($i = 1; $i <= $day_num; $i++) {
+            $for_date = Date("Y-m-{$i}", strtotime($curr_date));
+            $xingqi = Date("w", strtotime($for_date));
+            $head_arr['day'][] = $i . "日";
+            $head_arr['week'][] = $weekname[$xingqi];
+        }
+        return $head_arr;
+    }
+    /**
+     * 获取日期区间
+     */
+    public static function getDateArr2($date_arr)
+    {
+        // 日期配置
+        $weekname = array('星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六',);
+        //星期日排到末位
+        if (empty($week)) {
+            $week = 7;
+        }
+        $head_arr = [];
+        foreach ($date_arr as $val) {
+            // 
+            $day_str = date("d", strtotime($val));
+            $month_day_str = date("m-d", strtotime($val));
+            $month_day_str2 = date("m月d日", strtotime($val));
+            $xingqi = Date("w", strtotime($val));
+            $head_arr['day'][] = $day_str . "日";
+            $head_arr['month_day'][] = $month_day_str;
+            $head_arr['month_day2'][] = $month_day_str2;
+            $head_arr['week'][] = $weekname[$xingqi];
+        }
+        return $head_arr;
+    }
+    /**
      * 时间转时长
      * 时间换算时长
      */
