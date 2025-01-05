@@ -21,8 +21,9 @@ class LibXml
     /**
      * 	作用：array转xml
      * 将数组解析XML
+     * 遍历数组方法
      */
-    public static function arrToXml($arr = null)
+    public static function arrToXml(array $arr = [], bool $isCdata = true)
     {
         // if (is_null($arr)) {
         //     $arr = $this->parameters;
@@ -36,29 +37,20 @@ class LibXml
             if (is_numeric($val)) {
                 $xml .= "<" . $key . ">" . $val . "</" . $key . ">";
             } else {
-                $xml .= "<" . $key . "><![CDATA[" . $val . "]]></" . $key . ">";
+                if ($isCdata) {
+                    $xml .= "<" . $key . "><![CDATA[" . $val . "]]></" . $key . ">";
+                } else {
+                    $xml .= '<' . $key . '>' . $val . '</' . $key . '>';
+                }
             }
         }
         $xml .= "</xml>";
         return $xml;
     }
-
-    // 遍历数组方法
-    public static function arrToXml2($data)
-    {
-        $str = '<xml>';
-        foreach ($data as $k => $v) {
-            $str .= '<' . $k . '>' . $v . '</' . $k . '>';
-        }
-        $str .= '</xml>';
-        return $str;
-    }
-
     public static function xmlSafeStr($str)
     {
         return '<![CDATA[' . preg_replace("/[\\x00-\\x08\\x0b-\\x0c\\x0e-\\x1f]/", '', $str) . ']]>';
     }
-
     /**
      * 数据XML编码
      * @param mixed $data 数据
@@ -103,10 +95,6 @@ class LibXml
         $xml .= "</{$root}>";
         return $xml;
     }
-    public static function xmlToJson()
-    {
-    }
-    public static function jsonToXml()
-    {
-    }
+    public static function xmlToJson() {}
+    public static function jsonToXml() {}
 }
